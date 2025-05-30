@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 // Mount PeerJS routes
 app.use('/peerjs', peerServer);
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`PeerJS server running on port ${PORT}`);
 });
