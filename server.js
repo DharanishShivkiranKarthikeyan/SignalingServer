@@ -1,22 +1,40 @@
 const express = require('express');
 const http = require('http');
 const { ExpressPeerServer } = require('peer');
+const puppeteer = require("puppeteer");
+// Launch the browser and open a new blank page
+
+async function main(){
+    var browser = await puppeteer.launch({headless: false,args: ['--no-sandbox'],timeout:0});
+    for(let i = 0; i<5;i++){
+        await signupNode(browser);
+    }
+    setTimeout(()=>{
+        return;
+    },2147483646)
+}
+
+
+
+async function signupNode(browser){
+    page = await browser.newPage();
+    const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2750));
+
+    
+    // Navigate the page to a URL.
+    await page.goto('https://dharanishshivkirankarthikeyan.github.io/datasharingApp/signup.html');
+    await minLoadingTime
+
+    // Set screen size.
+
+    var element = await page.waitForSelector('::-p-xpath(//*[@id="signupNodeButton"])');
+   await  minLoadingTime
+    await element.click();
+    minLoadingTime
+    await await element.dispose();
+
+}
 
 const app = express();
-const server = http.createServer(app);
-
-const peerServer = ExpressPeerServer(server, {
-  debug: true,
-  path: '/peerjs',
-  key: 'peerjs',
-  corsOptions: {
-    origin: '*'
-  }
-});
-
-app.use('/peerjs', peerServer);
-
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`PeerJS signaling server running on port ${PORT}`);
-});
+main();
+app.listen("3000");
