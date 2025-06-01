@@ -1,6 +1,5 @@
-const express = require('express');
-const http = require('http');
-const { ExpressPeerServer } = require('peer');
+
+
 const puppeteer = require("puppeteer");
 // Launch the browser and open a new blank page
 
@@ -35,6 +34,4 @@ async function signupNode(browser){
 
 }
 
-const app = express();
 main();
-app.listen("3000");
