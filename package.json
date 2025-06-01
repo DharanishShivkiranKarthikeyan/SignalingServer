@@ -1,6 +1,7 @@
 {
-  "name": "peerjs-signaling-server",
-  "scripts": {
-    "start": "node server.js"
+  "name": "PuppeteerTest",
+  "version": "1.0.0",
+  "dependencies": {
+    "puppeteer": "^24.6.0"
   }
 }
